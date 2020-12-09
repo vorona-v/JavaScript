@@ -52,7 +52,7 @@ function someFunction (arg1, arg2, callback) {
 // переменная, генерирующая случайное число в интервале между arg1 и arg2
     var myNumber = Math.ceil(Math.random() * (arg1 - arg2) + arg2);
 // теперь всё готово и мы вызываем callback, куда передаем наш результат
-    callback(myNumber);
+    callback(1999);
 }
 // вызываем функцию
 someFunction(5, 15, function (num) {
@@ -61,6 +61,18 @@ someFunction(5, 15, function (num) {
 });
 
 
+/*
+формальный параметр — аргумент, указываемый при объявлении или определении функции.[1][2]
+фактический параметр — аргумент, передаваемый в функцию при её вызове;
+ */
+
+/*a = 1;
+b = 2;
+func(a, b);//фактический параметр
+
+func(arg1, arg2) {//формальный параметр
+    return arg1 + arg2;
+}*/
 
 var func = (function (param1) {
     console.log('param1 <=', param1)

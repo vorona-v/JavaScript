@@ -239,13 +239,13 @@ console.log(15, ageClassification(150) === null);
  */
 function oddFn(n) {
     var arr = [];
-
-    for (var i = 1; i <= n; i++) {
+    var i = 0;
+    while (i <= n) {
         if (i % 2) {
             arr[arr.length] = i;
         }
+        i++;
     }
-
     return arr;
 }
 // console.log(oddFn(10)); // [1, 3, 5, 7, 9]
@@ -254,7 +254,6 @@ console.log(oddFn(10));
 console.log(oddFn(15));
 // console.log(oddFn(20)); // [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
 console.log(oddFn(20));
-
 
 /*
  * #8
@@ -268,6 +267,17 @@ console.log(oddFn(20));
  *
  */
 
+function mainFunc(a, b, callback) {
+    return typeof callback === 'function' ? callback(a, b) : false;
+}
+
+function func(a, b) {
+   return a + b;
+}
+
+mainFunc(2, 3, func);
+console.log(mainFunc(2, 3, func));
+
 /*
  * реализуйте следующие функции, которые будут осуществлять механизм callback в основной функции,
  * возвращая ей результат собственного вычисления...
@@ -275,11 +285,18 @@ console.log(oddFn(20));
  */
 
 // cbRandom(a, b) – вычисляет и возвращает произвольное целое число в диапазоне между a и b включительно.
-
+function cbRandom(a, b) {
+    var rand = a + Math.random() * (b - a);
+    return Math.round(rand);
+}
 // cbPow(a, b) – вычисляет и возвращает результат возведения числа a в степень b.
-
+function cbPow(a, b) {
+    return Math.pow(a,b);
+}
 // cbAdd(a, b) – вычисляет и возвращает сумму двух чисел a и b.
-
+function cbAdd(a, b) {
+    return a + b;
+}
 /*
  * mainFunc() должна возвращать результат работы переданной ей возвратной функции, например:
  * mainFunc(2, 5, cbRandom) → случайно от 2 до 5 включительно
@@ -290,24 +307,17 @@ console.log(oddFn(20));
  */
 
 // console.log(mainFunc(2, 5, cbRandom)); // целые числа в диапазоне 2..5
+mainFunc(2, 5, cbRandom);
+console.log(mainFunc(2, 5, cbRandom));
 
 // console.log(mainFunc(2, 5, cbPow)); // 32
+mainFunc(2, 5, cbPow);
+console.log(mainFunc(2, 5, cbPow));
 
 // console.log(mainFunc(2, 5, cbAdd)); // 7
+mainFunc(2, 5, cbAdd);
+console.log(mainFunc(2, 5, cbAdd));
 
 // console.log(mainFunc(2, 5, 'not a func')); // false
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+mainFunc(2, 5, 'not a func');
+console.log(mainFunc(2, 5, 'not a func'));
