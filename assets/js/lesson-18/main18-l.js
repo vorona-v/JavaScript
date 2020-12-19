@@ -120,7 +120,7 @@ developer.develop();*/
 
 
 //Class
-class Person {
+/*class Person {
     constructor (name, age, gender){
         this.name = name;
         this.age = age;
@@ -163,9 +163,67 @@ developer.greet();
 developer.develop();
 
 developer.print();
-console.log(developer.print());
+console.log(developer.print());*/
 
 
+let newString, string;
+
+string = 'Some string';
+newString = string.
+replace('string', 'new string').
+concat(' actually').
+toUpperCase().
+slice(10);
+
+
+let score = [1,2,3,4];
+
+score.forEach((item) => console.log(item));
+
+score.currentScore = 10;
+score.totalScore = 20;
+
+console.log(score);
+console.log('!@#', score.length);
+
+
+function compareNumeric(a, b) {
+    if (a > b) return 1;
+    if (a < b) return -1;
+}
+
+/*var array = [ 1, 2, 15 ];
+
+array.sort((a,b) => a -b );
+console.log(array.sort(compareNumeric));*/
+
+
+/*let arr = [];
+let newArr;
+
+newArr = arr.slice();
+newArr[3] = 4;
+newArr[4] = 5;
+
+console.log('newArr', newArr);
+console.log('arr', arr);*/
+
+
+var arr = [1, 2, 3, 4, 5]
+
+// для каждого элемента массива запустить функцию,
+// промежуточный результат передавать первым аргументом далее
+/*                                  0           1
+                                    1           2
+                                    3           3
+                                    */
+var result = arr.reduce(function(sum, current) {
+    return sum + current;
+}, 0);
+
+console.log(result);
+
+console.log();
 console.log();
 console.log();
 

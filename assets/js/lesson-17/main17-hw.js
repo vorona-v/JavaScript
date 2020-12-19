@@ -154,7 +154,6 @@ var car = {
     model: 'Lacetti',
     name: 'Chevrolet',
     year: 2010,
-    //_used: 'used',
     info,
     get used() {
         return this.year === yearNow ? 'new' : 'used';
@@ -163,8 +162,6 @@ var car = {
         if (value === 'new' && yearNow !== this.year) {
             this.year = yearNow;
         }
-
-        //this._used = value;
     },
 };
 
@@ -173,7 +170,6 @@ var car2 = {
     model: 'FX50 AWD',
     name: 'Infinite',
     year: 2020,
-    //_used: 'new',
     info,
     get used() {
         return this.year === yearNow ? 'new' : 'used';
@@ -182,8 +178,6 @@ var car2 = {
         if (value === 'new' && yearNow !== this.year) {
             this.year = yearNow;
         }
-
-        //this._used = value;
     },
 };
 
