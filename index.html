@@ -7,14 +7,8 @@
     <title>JavaScript</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
           integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
-
     <style>
-        .slides {
-            position: relative;
-            height: 150px;
-            margin-bottom: 20px;
-        }
-        .slide {
+        .slides__item {
             position: absolute;
             left: 0px;
             top: 0px;
@@ -33,30 +27,30 @@
         non-essential styles:
         just for appearance; change whatever you want
         */
-        .slide {
+        .slides__item {
             font-size: 40px;
             padding: 40px;
             box-sizing: border-box;
             background: #333;
             color: #fff;
         }
-        .slide:nth-of-type(1) {
+        .slides__item:nth-of-type(1) {
             background: red;
         }
-        .slide:nth-of-type(2) {
+        .slides__item:nth-of-type(2) {
             background: orange;
         }
-        .slide:nth-of-type(3) {
+        .slides__item:nth-of-type(3) {
             background: green;
         }
-        .slide:nth-of-type(4) {
+        .slides__item:nth-of-type(4) {
             background: blue;
         }
-        .slide:nth-of-type(5) {
+        .slides__item:nth-of-type(5) {
             background: purple;
         }
 
-        .control {
+        .controls__item {
             display: inline-block;
             padding: 10px 20px;
             background-color: #cccccc;
@@ -64,14 +58,8 @@
             margin-right: 15px;
             user-select: none;
         }
-        .indicators, .controls {
-            text-align: center;
-            display: flex;
-            list-style: none;
-            padding: 0;
-            justify-content: center;
-        }
-        .indicator {
+
+        .indicators__item {
             width: 20px;
             height: 20px;
             border-radius: 50%;
@@ -79,46 +67,17 @@
             margin: 0 15px 0 0;
             cursor: pointer;
         }
-        .indicator.active {
+        .indicators__item.active {
             background: #333333;
         }
     </style>
 </head>
 <body>
 
-   <!-- <ul>
-        <li>test1</li>
-        <li>test2</li>
-        <li>test3</li>
-        <li>test4</li>
-        <li>test5</li>
-    </ul>-->
-<div id="carousel">
-    <div id="slides-container" class="slides">
-        <div class="slide active">Slide 1</div>
-        <div class="slide">Slide 2</div>
-        <div class="slide">Slide 3</div>
-        <div class="slide">Slide 4</div>
-        <div class="slide">Slide 5</div>
-    </div>
-
-    <!--<ol id="indicators-container" class="indicators">
-        <li class="indicator active" data-slide-to="1"></li>
-        <li class="indicator " data-slide-to="2"></li>
-        <li class="indicator " data-slide-to="3"></li>
-        <li class="indicator " data-slide-to="4"></li>
-        <li class="indicator " data-slide-to="5"></li>
-    </ol>-->
-
-    <!--<div id="controls-container" class="controls">
-        <span id="pause-btn" class="control control-pause"><i class="far fa-pause-circle"></i></span>
-        <span id="prev-btn" class="control control-prev">Prev</span>
-        <span id="next-btn" class="control control-next">Next</span>
-    </div>-->
+<div id="carousel" class="carousel">
 
 </div>
 
-<script src="assets/js/lesson-20/carousel.js"></script>
-<script src="assets/js/lesson-18/main18-hw.js"></script>
+<script src="assets/js/lesson-19/main19-hw.js"></script>
 </body>
 </html>
