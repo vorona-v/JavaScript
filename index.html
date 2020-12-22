@@ -2,12 +2,82 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>JavaScript</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+          integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <style>
+        .slides__item {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            z-index: 1;
+            transition: opacity 0.5s;
+        }
+        .active {
+            opacity: 1;
+            z-index: 2;
+        }
+
+        /*
+        non-essential styles:
+        just for appearance; change whatever you want
+        */
+        .slides__item {
+            font-size: 40px;
+            padding: 40px;
+            box-sizing: border-box;
+            background: #333;
+            color: #fff;
+        }
+        .slides__item:nth-of-type(1) {
+            background: red;
+        }
+        .slides__item:nth-of-type(2) {
+            background: orange;
+        }
+        .slides__item:nth-of-type(3) {
+            background: green;
+        }
+        .slides__item:nth-of-type(4) {
+            background: blue;
+        }
+        .slides__item:nth-of-type(5) {
+            background: purple;
+        }
+
+        .controls__item {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #cccccc;
+            cursor: pointer;
+            margin-right: 15px;
+            user-select: none;
+        }
+
+        .indicators__item {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: aqua;
+            margin: 0 15px 0 0;
+            cursor: pointer;
+        }
+        .indicators__item.active {
+            background: #333333;
+        }
+    </style>
 </head>
 <body>
 
-<h1>Hello</h1>
+<div id="carousel" class="carousel">
 
-<script src="main.js"></script>
+</div>
+
+<script src="assets/js/lesson-19/main19-hw.js"></script>
 </body>
 </html>
