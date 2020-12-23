@@ -5,40 +5,27 @@ function createCarousel(slidesCount = 5) {
     let timerID = null;
     let isPlaying = true;
     let interval = 2000;
-    let swipeStartX = null;
-    let swipeEndX = null;
 
     const ACTIVE = 'active';
     const PAUSE_ICON = '<i class="fas fa-pause-circle"></i>';
-    const PLAY_ICON = '<i class="fas play"></i>';
+    const PLAY_ICON = '<i class="fas fa-play"></i>';
     const BTN_PREV = '<i class="fas fa-chevron-left"></i>';
     const BTN_NEXT = '<i class="fas fa-chevron-right"></i>';
-    const SPACE = ' ';
-    const LEFT_ARROW = ' ';
-    const RIGHT_ARROW = ' ';
 
     const style = document.createElement('style');
     container.appendChild(style);
     style.innerHTML = `
-        .slides { 
-            position: relative;
-            height: 150px;
-            margin-bottom: 20px;
-        };
-        .indicators {
-            position: relative;
-        };
-        .controls {
-            display: flex;
-        }
+        .slides { position: relative }
+        .controls { position: relative }
+        .indicators { display: flex }
     `;
 
-
+    const indicatorsContainer = document.createElement('div');
     const btnPause = document.createElement('div');
     const btnPrev = document.createElement('div');
     const btnNext = document.createElement('div');
 
-    const indicatorsContainer = document.createElement('div');
+
 
     const slides = [];
     const indicators = [];
@@ -49,9 +36,14 @@ function createCarousel(slidesCount = 5) {
         slidesContainer.setAttribute('class', 'slides');
 
         for (let i = 0; i < slidesCount; i++) {
+
+            let arr = [1,2,3,4,5,6,7,8,9,10];
+            let out;
+
             const slide = document.createElement('li');
             slide.innerHTML = '<a href="#"></a>';
             slide.setAttribute('class', 'slides__item');
+            slide.style.backgroundImage = 'url(assets/images/lesson-19/'+arr[i]+'.jpg)';
 
             if ( i === 0 ) slide.classList.add(ACTIVE);
             slidesContainer.appendChild(slide);
@@ -63,6 +55,7 @@ function createCarousel(slidesCount = 5) {
     }
 
     function initIndicators() {
+
         indicatorsContainer.setAttribute('class', 'indicators');
 
         for (let i = 0; i < slidesCount; i++) {
@@ -76,6 +69,7 @@ function createCarousel(slidesCount = 5) {
 
             indicators[indicators.length] = indicator;
         }
+
         container.appendChild(indicatorsContainer);
     }
 
@@ -83,17 +77,17 @@ function createCarousel(slidesCount = 5) {
         const controls = document.createElement('div');
         controls.setAttribute('class', 'controls');
 
-        btnPause.setAttribute('class', 'controls__item controls__pause');
         btnPrev.setAttribute('class', 'controls__item controls__prev');
         btnNext.setAttribute('class', 'controls__item controls__next');
+        btnPause.setAttribute('class', 'controls__item controls__pause');
 
-        btnPause.innerHTML = `${PLAY_ICON}`;
         btnPrev.innerHTML = `${BTN_PREV}`;
         btnNext.innerHTML = `${BTN_NEXT}`;
+        btnPause.innerHTML = `${PLAY_ICON}`;
 
         controls.appendChild(btnPrev);
-        controls.appendChild(btnPause);
         controls.appendChild(btnNext);
+        controls.appendChild(btnPause);
 
         container.appendChild(controls);
     }
@@ -140,8 +134,11 @@ function createCarousel(slidesCount = 5) {
 
         if (target.classList.contains('indicators__item')) {
             pause();
+            indicators[currentSlide].style.backgroundColor = '';
             goToNth(+target.dataset.slideTo);
+            indicators[currentSlide].style.backgroundColor = 'red';
         }
+
     }
 
     btnPause.addEventListener('click', pausePlay);
