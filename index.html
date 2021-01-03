@@ -7,14 +7,31 @@
     <title>JavaScript</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
           integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/lesson-19/style.css">
+    <link rel="stylesheet" href="assets/css/lesson-20/style.css">
 </head>
 <body>
 
-<div id="carousel" class="carousel">
+<ul id="slides" class="slides">
+    <li class="slides__item active">Slide 1</li>
+    <li class="slides__item">Slide 2</li>
+    <li class="slides__item">Slide 3</li>
+    <li class="slides__item">Slide 4</li>
+    <li class="slides__item">Slide 5</li>
+</ul>
 
+<button class="controls__item controls__pause" id="pause">Pause</button>
+<button class="controls__item controls__prev" id="previous">Previous</button>
+<button class="controls__item controls__next" id="next">Next</button>
+
+<div class="indicators">
+    <span class="indicators__item active" data-slide-to="0"></span>
+    <span class="indicators__item" data-slide-to="1"></span>
+    <span class="indicators__item" data-slide-to="2"></span>
+    <span class="indicators__item" data-slide-to="3"></span>
+    <span class="indicators__item" data-slide-to="4"></span>
+    <span class="indicators__item" data-slide-to="5"></span>
 </div>
 
-<script src="assets/js/lesson-19/main19-hw.js"></script>
+<script src="assets/js/lesson-20/main20-hw.js"></script>
 </body>
 </html>
