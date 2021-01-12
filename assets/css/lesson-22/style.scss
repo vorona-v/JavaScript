@@ -1,0 +1,136 @@
+@import "mixin";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap');
+
+body {
+  padding: 25px 0 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.content {
+  img {
+    width: 100%;
+    vertical-align: bottom;
+    margin: 0 0 30px;
+  }
+  .go-to-elem {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: black;
+    @include transition(color 0.15s);
+    @include min-medium {
+      &:hover {
+        color: #9c9b9b;
+        text-decoration: none;
+      }
+    }
+  }
+  &__title {
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    color: black;
+    margin: 0 0 25px;
+    @include fluidFontSize(18px, 36px, 375px, 1920px, 18px);
+  }
+  &__subtitle {
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    color: black;
+    font-size: 18px;
+  }
+  &__text {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: black;
+    line-height: 1.5;
+    letter-spacing: 0.5px;
+    font-size: 16px;
+  }
+  &__items {
+    margin: 0 0 40px;
+  }
+  &__item {
+    margin: 0 0 20px;
+  }
+  &__item-header {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    color: black;
+    font-size: 16px;
+    cursor: pointer;
+    @include inline-flex;
+    align-items: center;
+    i {
+      font-size: 14px;
+      margin: 0 0 0 10px;
+      @include transition(rotate 0.15s);
+    }
+    @include min-medium {
+      &:hover {
+        i {
+          @include transform(rotate(180deg));
+        }
+      }
+    }
+  }
+  &__item-content {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: black;
+    line-height: 1.5;
+    letter-spacing: 0.5px;
+    font-size: 16px;
+    display: none;
+    padding: 15px 0 0;
+  }
+}
+.active {
+  .content {
+    &__item-header {
+      i {
+        @include transform(rotate(180deg));
+      }
+    }
+  }
+}
+
+.scroll-top {
+  background-color: #cacaca;
+  width: 40px;
+  height: 40px;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  cursor: pointer;
+  @include flexbox-center;
+  @include border-radius(50%);
+  z-index: 1000;
+  @include transition(background-color 0.3s, opacity 0.5s, visibility 0.5s);
+  &:before {
+    @include psevdo-absolute;
+    right: calc(50% - 8px);
+    top: calc(50% - 3px);
+    border: solid #fff;
+    border-width: 0 1px 1px 0;
+    display: inline-block;
+    transform: rotate(-135deg);
+    width: 15px;
+    height: 15px;
+  }
+
+  @include min-medium {
+    &:hover {
+      background-color: #000000;
+    }
+  }
+}

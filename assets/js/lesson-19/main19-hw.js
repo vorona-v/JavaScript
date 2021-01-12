@@ -5,12 +5,17 @@ function createCarousel(slidesCount = 5) {
     let timerID = null;
     let isPlaying = true;
     let interval = 2000;
+    let swipeStartX = null;
+    let swipeEndX = null;
 
     const ACTIVE = 'active';
     const PAUSE_ICON = '<i class="fas fa-pause-circle"></i>';
     const PLAY_ICON = '<i class="fas fa-play"></i>';
     const BTN_PREV = '<i class="fas fa-chevron-left"></i>';
     const BTN_NEXT = '<i class="fas fa-chevron-right"></i>';
+    const SPACE = 32;
+    const LEFT_ARROW = 37;
+    const RIGHT_ARROW = 39;
 
     const style = document.createElement('style');
     container.appendChild(style);
@@ -99,9 +104,11 @@ function createCarousel(slidesCount = 5) {
     function goToNth (n) {
         slides[currentSlide].classList.toggle(ACTIVE);
         indicators[currentSlide].classList.toggle(ACTIVE);
+        indicators[currentSlide].style.backgroundColor = '';
         currentSlide = (n + slidesCount) % slidesCount;
         slides[currentSlide].classList.toggle(ACTIVE);
         indicators[currentSlide].classList.toggle(ACTIVE);
+        indicators[currentSlide].style.backgroundColor = 'red';
     }
 
     const goToPrev = () => goToNth(currentSlide - 1);
@@ -134,18 +141,36 @@ function createCarousel(slidesCount = 5) {
 
         if (target.classList.contains('indicators__item')) {
             pause();
-            indicators[currentSlide].style.backgroundColor = '';
             goToNth(+target.dataset.slideTo);
-            indicators[currentSlide].style.backgroundColor = 'red';
         }
+    }
 
+    function pressKey(e) {
+        if (e.keyCode === LEFT_ARROW) prev();
+        if (e.keyCode === RIGHT_ARROW) next();
+        if (e.keyCode === SPACE) pausePlay();
+    }
+
+    function swipeStart(e) {
+        if (e.changedTouches.length === 1) swipeStartX = e.changedTouches[0].pageX;
+    }
+
+    function swipeEnd(e) {
+        if (e.changedTouches.length === 1) {
+            swipeEndX = e.changedTouches[0].pageX;
+            if ((swipeStartX - swipeEndX) < 0) prev();
+            if ((swipeStartX - swipeEndX) > 0) next();
+        }
     }
 
     btnPause.addEventListener('click', pausePlay);
     btnPrev.addEventListener('click', prev);
     btnNext.addEventListener('click', next);
     indicatorsContainer.addEventListener('click', indicate);
+    document.addEventListener('keydown', pressKey);
 
+    container.addEventListener('touchstart', swipeStart);
+    container.addEventListener('touchend', swipeEnd);
 }
 
 createCarousel(8);
